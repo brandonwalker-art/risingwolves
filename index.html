@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rising Wolves Youth Track</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #5B2D8E;
+    --purple-light: #7B4DB8;
+    --purple-deep: #3B1A6B;
+    --navy: #1A1A2E;
+    --dark: #0D0D0D;
+    --silver: #C0C0C0;
+    --off: #F4F4F6;
+    --muted: #7A7A7A;
+    --white: #FFFFFF;
+    --gold: #F0A500;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    color: var(--white);
+    padding: 64px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -100px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: var(--purple);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: var(--silver);
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  .paw1 { position: absolute; top: 24px; left: 4%; font-size: 52px; opacity: 0.06; pointer-events: none; user-select: none; }
+  .paw2 { position: absolute; bottom: 18px; right: 6%; font-size: 42px; opacity: 0.06; pointer-events: none; user-select: none; }
+  .paw3 { position: absolute; top: 55%; left: 40%; font-size: 30px; opacity: 0.04; pointer-events: none; user-select: none; }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 16px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--silver);
+    display: inline-block;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 130px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  h1 .accent { color: var(--purple-light); }
+  .hero-wolf {
+    font-size: clamp(52px, 9vw, 90px);
+    display: inline-block;
+    animation: bounce 2.4s ease-in-out infinite;
+    line-height: 1;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50%       { transform: translateY(-12px) rotate(5deg); }
+  }
+  .hero-tagline {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 16px 40px;
+    background: var(--purple);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 24px rgba(91,45,142,0.5);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .hero-cta:hover { background: var(--purple-light); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(91,45,142,0.6); }
+
+  /* DEADLINE BANNER */
+  .deadline-banner {
+    background: var(--gold);
+    color: #1a0a00;
+    padding: 14px 40px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .deadline-banner .dlicon { font-size: 20px; }
+  .deadline-banner .dlhighlight {
+    background: rgba(0,0,0,0.12);
+    padding: 3px 14px;
+    border-radius: 50px;
+    font-size: 14px;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--purple);
+    color: #fff;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-strip p {
+    max-width: 860px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .about-strip strong { font-weight: 700; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+  }
+
+  /* PROGRAM CARDS */
+  .programs {
+    padding: 72px 40px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 700px) { .program-grid { grid-template-columns: 1fr; } }
+
+  .program-card {
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+  }
+  .program-card:hover { transform: translateY(-4px); }
+  .program-card.elem { background: var(--purple-deep); color: #fff; }
+  .program-card.comp { background: var(--navy); color: #fff; }
+
+  .card-header {
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .card-emoji {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .card-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.16);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+  .card-desc {
+    margin-top: 10px;
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.65;
+    opacity: 0.82;
+  }
+
+  .card-body {
+    padding: 22px 28px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .info-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .info-icon {
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  .info-text { font-size: 13.5px; line-height: 1.55; }
+  .info-text strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1px;
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .card-events { padding: 0 28px 22px; }
+  .card-events-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .pill {
+    padding: 6px 13px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .no-throw-note {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.45;
+    font-style: italic;
+  }
+
+  .card-price {
+    padding: 18px 28px;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+  .price-left { display: flex; flex-direction: column; gap: 3px; }
+  .price-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+  .price-note { font-size: 12px; opacity: 0.6; line-height: 1.45; }
+  .price-val { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; flex-shrink: 0; }
+
+  /* MEETS */
+  .meets-section {
+    background: var(--dark);
+    color: var(--white);
+    padding: 64px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .meets-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+  .meets-section .section-label { color: rgba(255,255,255,0.3); }
+  .meets-section .section-label::after { background: rgba(255,255,255,0.15); opacity: 1; }
+
+  .meets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 700px) { .meets-grid { grid-template-columns: 1fr; } }
+
+  .meets-col-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--silver);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meet-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .meet-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--purple-light);
+    flex-shrink: 0;
+    width: 26px;
+  }
+  .meet-details { font-size: 13.5px; line-height: 1.55; }
+  .meet-details strong { font-weight: 700; color: #fff; display: block; }
+  .meet-details span { opacity: 0.48; font-size: 12.5px; }
+  .usatf-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--purple);
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 50px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .usatf-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    border-left: 2px solid var(--purple);
+    padding-left: 12px;
+  }
+
+  /* FUN FACTS STRIP */
+  .fun-strip {
+    background: var(--purple-deep);
+    padding: 36px 40px;
+    overflow: hidden;
+  }
+  .fun-strip-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  @media (max-width: 700px) { .fun-strip-inner { grid-template-columns: 1fr; } }
+  .fun-item { color: #fff; }
+  .fun-emoji { font-size: 36px; display: block; margin-bottom: 8px; }
+  .fun-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--silver);
+  }
+  .fun-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1060 100%);
+    padding: 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::after {
+    content: '🐺';
+    position: absolute;
+    right: 40px; bottom: 20px;
+    font-size: 80px;
+    opacity: 0.06;
+  }
+  .footer-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-left h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--silver);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-left p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 8px;
+    line-height: 1.65;
+  }
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .contact-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-weight: 700;
+  }
+  .footer-right a {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .footer-right a:hover { color: var(--silver); border-color: var(--silver); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-eyebrow  { animation-delay: 0.05s; }
+  h1             { animation-delay: 0.15s; }
+  .hero-tagline  { animation-delay: 0.25s; }
+  .hero-cta      { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="paw1">🐾</span>
+  <span class="paw2">🐾</span>
+  <span class="paw3">🐾</span>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> Riverton, UT &nbsp;&middot;&nbsp; Spring 2026</div>
+    <h1><span class="accent">RISING</span>&nbsp;WOLVES <span class="hero-wolf">🐺</span></h1>
+    <p class="hero-tagline">"Let's Rise Together"</p>
+    <a class="hero-cta" href="https://jordansdut.schoolwindow.com/captcha.html?requested_page=%2Festore%2Frhs%2Fcampsclinics.html%3Fview%3Dgrid" target="_blank">
+      🏁 Register Here
+    </a>
+  </div>
+</section>
+
+<!-- DEADLINE BANNER -->
+<div class="deadline-banner">
+  <span class="dlicon">⏰</span>
+  <span>Registration Deadline:</span>
+  <span class="dlhighlight">📅 April 15th &mdash; Noon MT</span>
+  <span>Don't miss your spot!</span>
+  <span class="dlicon">🏃‍♂️</span>
+</div>
+
+<!-- ABOUT -->
+<div class="about-strip">
+  <p>🌟 Rising Wolves is a youth track team designed to <strong>build confidence</strong>, teach athletic principles, and work on <strong>individual improvement</strong> — all while having fun! 🎉 Two program options are available: <strong>Elementary Program</strong> and <strong>Competition Program</strong>.</p>
+</div>
+
+
+
+<!-- PROGRAM CARDS -->
+<section class="programs">
+  <div class="section-label">Programs</div>
+  <div class="program-grid">
+
+    <!-- ELEMENTARY -->
+    <div class="program-card elem">
+      <div class="card-header">
+        <span class="card-emoji">🌱</span>
+        <div class="card-badge">Ages K &ndash; 6th Grade</div>
+        <div class="card-title">Elementary Program</div>
+        <p class="card-desc">A 6-week program designed for elementary aged kids, K&ndash;6th, who are beginners or intermediates at track and field. This program teaches basic principles on running, jumping, and throwing. Practices are made fun, to get outside, get active, and to learn the basics of track and field.</p>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <div class="info-icon">📅</div>
+          <div class="info-text"><strong>Season</strong>April 13th &ndash; May 22nd</div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          <div class="info-text"><strong>Practices</strong>Monday &amp; Thursday &middot; 5:30&ndash;6:30 PM</div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-text"><strong>Location</strong>RHS Track</div>
+        </div>
+      </div>
+      <div class="card-events">
+        <div class="card-events-label">Events Taught</div>
+        <div class="pills">
+          <span class="pill">🏃 Distance</span>
+          <span class="pill">💨 Sprints</span>
+          <span class="pill">↔️ Standing Long Jump</span>
+          <span class="pill">🥎 Softball Throw</span>
+          <span class="pill">🏹 Turbo Javelin</span>
+        </div>
+      </div>
+      <div class="card-price">
+        <div class="price-left">
+          <div class="price-label">Cost</div>
+          <div class="price-note">Includes tech tee &amp; meets</div>
+        </div>
+        <div class="price-val">$150</div>
+      </div>
+    </div>
+
+    <!-- COMPETITION -->
+    <div class="program-card comp">
+      <div class="card-header">
+        <span class="card-emoji">🏆</span>
+        <div class="card-badge">Ages 10 &ndash; 15</div>
+        <div class="card-title">Competition Program</div>
+        <p class="card-desc">An 11-week program designed for 10&ndash;15 year olds who are either new to track and field or want to further develop their skills. The program teaches foundational and advanced techniques to the sport. Practices are focused to not only learn the basics, but also to prepare the athlete for high school athletics.</p>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <div class="info-icon">📅</div>
+          <div class="info-text"><strong>Season</strong>April 13th &ndash; June 27th</div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          <div class="info-text"><strong>Practices</strong>Monday &amp; Thursday &middot; 5:30&ndash;6:45 PM</div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-text"><strong>Location</strong>RHS Track</div>
+        </div>
+      </div>
+      <div class="card-events">
+        <div class="card-events-label">Events Offered</div>
+        <div class="pills">
+          <span class="pill">🏃 Distance</span>
+          <span class="pill">💨 Sprints</span>
+          <span class="pill">🚧 Hurdles</span>
+          <span class="pill">↔️ Long Jump</span>
+          <span class="pill">📏 High Jump</span>
+          <span class="pill">🔁 Relays</span>
+          <span class="pill">🎿 Pole Vault</span>
+        </div>
+        <p class="no-throw-note">No throwing events offered this year.</p>
+      </div>
+      <div class="card-price">
+        <div class="price-left">
+          <div class="price-label">Cost</div>
+          <div class="price-note">Includes jersey &amp; listed meets</div>
+        </div>
+        <div class="price-val">$200</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEETS -->
+<section class="meets-section">
+  <div class="meets-inner">
+    <div class="section-label">Meet Schedule</div>
+    <div class="meets-grid">
+
+      <div>
+        <div class="meets-col-title">🌱 Elementary</div>
+
+        <div class="meet-item">
+          <div class="meet-num">1</div>
+          <div class="meet-details">
+            <strong>May 9th &middot; 1:30 PM</strong>
+            <span>Davis High School (with Race Cats)</span>
+          </div>
+        </div>
+        <div class="meet-item">
+          <div class="meet-num">2</div>
+          <div class="meet-details">
+            <strong>May 23rd</strong>
+            <span>Intersquad Meet @ RHS</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="meets-col-title">🏆 Competition</div>
+
+        <div class="meet-item">
+          <div class="meet-num">1</div>
+          <div class="meet-details">
+            <strong>May 9th &middot; 4:00 PM</strong>
+            <span>Davis High School (with Race Cats)</span>
+          </div>
+        </div>
+        <div class="meet-item">
+          <div class="meet-num">2</div>
+          <div class="meet-details">
+            <strong>May 23rd <span class="usatf-tag">USATF &#9733;</span></strong>
+            <span>Intersquad Meet @ RHS</span>
+          </div>
+        </div>
+        <div class="meet-item">
+          <div class="meet-num">3</div>
+          <div class="meet-details">
+            <strong>May 30th <span class="usatf-tag">USATF &#9733;</span></strong>
+            <span>Corner Canyon High School</span>
+          </div>
+        </div>
+        <div class="meet-item">
+          <div class="meet-num">4</div>
+          <div class="meet-details">
+            <strong>June 6th <span class="usatf-tag">USATF &#9733;</span></strong>
+            <span>Tony Glover Memorial Meet @ Timpanogos</span>
+          </div>
+        </div>
+        <div class="meet-item">
+          <div class="meet-num">5</div>
+          <div class="meet-details">
+            <strong>June 25&ndash;27 <span class="usatf-tag">USATF State &#9733;</span></strong>
+            <span>Tentative &mdash; location TBD</span>
+          </div>
+        </div>
+
+        <p class="usatf-note">&#9733; USATF meets require a one-time annual USATF membership of ~$30. USATF meets also have an additional per-event fee of ~$3&ndash;$8. Meets subject to change.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>Questions? 🐺</h3>
+      <p>
+        McKayla Walker &middot; Rising Wolves Coordinator<br>
+        For any questions or additional information, reach out directly.
+      </p>
+    </div>
+    <div class="footer-right">
+      <div class="contact-item">
+        <span class="contact-label">📧 Email</span>
+        <a href="mailto:mckaylam1113@gmail.com">mckaylam1113@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">📞 Phone</span>
+        <a href="tel:8016710585">801-671-0585</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
